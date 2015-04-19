@@ -64,6 +64,7 @@ BOOST_PYTHON_MODULE(pyPolyCSG){
     
 	class_<polyhedron>("polyhedron")
 	.def( "load_mesh",	               &polyhedron::initialize_load_from_file )
+	.def( "load_mesh_data",	           &polyhedron::initialize_load_from_mesh )
 	.def( "make_sphere",               &polyhedron::initialize_create_sphere, make_sphere_overloads() )
 	.def( "make_box",                  &polyhedron::initialize_create_box,    make_box_overloads() )
     .def( "make_cylinder",             &polyhedron::initialize_create_cylinder, make_cylinder_overloads() )

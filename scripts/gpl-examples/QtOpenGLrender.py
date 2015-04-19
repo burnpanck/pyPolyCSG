@@ -25,6 +25,8 @@
 # Modifications Copyright (C) 2012 David B. Curtis. All rights reserved.
 # Original work contained a notice of license but no copyright statement.
 
+from __future__ import division
+
 import sys
 import math
 from PySide import QtCore, QtGui, QtOpenGL
@@ -161,7 +163,7 @@ class GLWidget(QtOpenGL.QGLWidget):
 	
     def resizeGL(self, width, height):
         side = min(width, height)
-        GL.glViewport((width - side) / 2, (height - side) / 2, side, side)
+        GL.glViewport((width - side) // 2, (height - side) // 2, side, side)
         GL.glMatrixMode(GL.GL_PROJECTION)
         GL.glLoadIdentity()
         GL.glOrtho(-0.5, +0.5, +0.5, -0.5, 4.0, 15.0)

@@ -222,7 +222,7 @@ class GLWidget(QtOpenGL.QGLWidget):
         normals = numpy.array(
             [numpy.cross(vertices[triangles[i][1]]-vertices[triangles[i][0]], \
                          vertices[triangles[i][2]]-vertices[triangles[i][0]]) \
-                             for i in xrange(len(triangles))])
+                             for i in range(len(triangles))])
         
         genList = GL.glGenLists(1)
         GL.glNewList(genList, GL.GL_COMPILE)

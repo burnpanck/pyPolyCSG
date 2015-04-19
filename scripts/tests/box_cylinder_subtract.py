@@ -2,6 +2,8 @@
 # produces nearly coincident geometry, causes problems when
 # probe variable is adjusted, likely due to concident/degenerate
 # geometry.  
+from __future__ import division, print_function, absolute_import, unicode_literals
+
 import pyPolyCSG as csg
 
 probe = 0.05;
@@ -17,12 +19,12 @@ cyl = cyl.translate(0,probe,0)
 offset = 4
 i = 0 # keep track of which iteration failed
 while offset > -0.4:
-    print i
+    print(i)
     i += 1
     tool = cyl.translate(offset,0,0)
     block -= tool
     offset -= 0.5
     block.save_mesh( 'tmp_%04d.obj' % i )
 
-print offset
+print(offset)
 block.save_mesh('tmp.obj')

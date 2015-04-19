@@ -1,5 +1,6 @@
 # example of extrusion primitive
 # James Gregson (james.gregson@gmail.com), March 2013
+from __future__ import division, print_function, absolute_import, unicode_literals
 
 # import module
 import pyPolyCSG as csg
