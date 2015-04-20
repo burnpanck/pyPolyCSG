@@ -55,8 +55,13 @@ BOOST_PYTHON_MODULE(pyPolyCSG){
     
 	def( "load_mesh",        load_mesh_file );
 	def( "sphere",		     sphere,    sphere_overloads() );
-	def( "box",			     box,       box_overloads() );
-	def( "cylinder",	     cylinder,  cylinder_overloads() );
+	def( "box",			     box,       box_overloads(),
+	    "box(x, y, z, centred=False):\n\ncentred=True: box centre at origin\n"
+	    "centred=False: box centre at x/2, y/2, z/2." );
+	def( "cylinder",	     cylinder,  cylinder_overloads(),
+	    "cylinder(radius, height, centred=False, nsegments):\n\n"
+	    "centred=True: cylinder centre at origin\n"
+	    "centred=False: cylinder centre at 0, 0, height/2." );
 	def( "cone",		     cone,      cone_overloads() );
 	def( "torus",		     torus,     torus_overloads() );
     def( "extrusion",        py_extrusion /*, extrusion_overloads*/ );
@@ -73,7 +78,10 @@ BOOST_PYTHON_MODULE(pyPolyCSG){
     .def( "make_extrusion",            &polyhedron::initialize_create_extrusion, make_extrusion_overloads() )
     .def( "make_surface_of_revolution",&polyhedron::initialize_create_surface_of_revolution, make_surface_of_revolution_overloads() )
 	.def( "translate",                 &polyhedron::translate )
-	.def( "rotate",                    &polyhedron::rotate )
+	.def( "rotate",                    &polyhedron::rotate,
+	    "rotate(theta_x, theta_y, theta_z):\n\nRight handed rotation when looking from"
+	    " positive axis towards origin, units are degrees, first rotation around z,"
+	    " then y, then x.")
 	.def( "scale",                     &polyhedron::scale )
 	.def( "mult_matrix_3",             &polyhedron::py_mult_matrix_3 )
 	.def( "mult_matrix_4",             &polyhedron::py_mult_matrix_4 )
